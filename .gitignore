@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### DIRECTORY ###
+src/main/java/org/microservice_turmas

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org</groupId>
-	<artifactId>microservice-turmas</artifactId>
+	<artifactId>microservice-aluguel</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>microservice-turmas</name>
-	<description>Microserviço responsável pela lógica da camada de turmas</description>
+	<description>Microserviço responsável pela lógica alugueis de filme</description>
 	<url/>
 	<licenses>
 		<license/>
