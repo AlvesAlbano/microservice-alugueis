@@ -51,7 +51,7 @@ public class AluguelDTO {
         this.devolucaoAluguel = devolucaoAluguel;
     }
 
-    public Aluguel aluguelBuilder(){
+    public Aluguel aluguelBuilder() {
         return new Aluguel(
                 idUsuario,
                 idFilme,

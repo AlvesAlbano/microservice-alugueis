@@ -16,7 +16,7 @@ public class Aluguel {
     @Column(name = "id-usuario")
     private Integer idUsuario;
 
-    @Column(name = "id-filme",unique = true)
+    @Column(name = "id-filme", unique = true)
     private Integer idFilme;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
@@ -27,7 +27,8 @@ public class Aluguel {
     @Column(name = "devolucao-aluguel")
     private LocalDate devolucaoAluguel;
 
-    protected Aluguel(){}
+    protected Aluguel() {
+    }
 
     public Aluguel(Integer idUsuario, Integer idFilme, LocalDate inicioAluguel, LocalDate devolucaoAluguel) {
         this.idUsuario = idUsuario;

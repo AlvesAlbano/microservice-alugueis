@@ -15,9 +15,9 @@ public class AluguelController {
     private AluguelService aluguelService;
 
     @GetMapping("/todos")
-    public synchronized ResponseEntity<?> pegarAlugueis(){
+    public synchronized ResponseEntity<?> pegarAlugueis() {
 
-        if (aluguelService.pegarTodos().isEmpty()){
+        if (aluguelService.pegarTodos().isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Nenhum aluguel encontrado");
         }
@@ -25,15 +25,15 @@ public class AluguelController {
     }
 
     @PostMapping("/adicionar")
-    public synchronized ResponseEntity<?> adicionarAluguel(@RequestBody AluguelDTO aluguelDTO){
-         aluguelService.adicionarAluguel(aluguelDTO);
+    public synchronized ResponseEntity<?> adicionarAluguel(@RequestBody AluguelDTO aluguelDTO) {
+        aluguelService.adicionarAluguel(aluguelDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Novo aluguel adicionado");
     }
 
     @DeleteMapping("/devolver/{id}")
-    public synchronized ResponseEntity<?> devolverAluguel(@PathVariable("id") Integer idAluguel){
+    public synchronized ResponseEntity<?> devolverAluguel(@PathVariable("id") Integer idAluguel) {
 
         if (aluguelService.pegarPorId(idAluguel).isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -41,24 +41,24 @@ public class AluguelController {
         }
 
         aluguelService.devolverFilme(idAluguel);
-        return ResponseEntity.ok(String.format("Aluguel de ID %d foi encerrado\n",idAluguel));
+        return ResponseEntity.ok(String.format("Aluguel de ID %d foi encerrado\n", idAluguel));
     }
 
     @PatchMapping("/editar/{id}")
-    public synchronized ResponseEntity<?> editarAluguel(@PathVariable("id") Integer idAluguel, @RequestBody AluguelDTO aluguelDTO){
+    public synchronized ResponseEntity<?> editarAluguel(@PathVariable("id") Integer idAluguel, @RequestBody AluguelDTO aluguelDTO) {
 
-        if (aluguelService.pegarPorId(idAluguel).isEmpty()){
+        if (aluguelService.pegarPorId(idAluguel).isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Nenhum aluguel encontrado");
         }
 
-        aluguelService.editarAluguel(idAluguel,aluguelDTO);
+        aluguelService.editarAluguel(idAluguel, aluguelDTO);
         return ResponseEntity.ok("Aluguel editado");
     }
 
     @GetMapping("/filme/{id}")
-    public synchronized ResponseEntity<?> pegarPorFilme(Integer idFilme){
-        if (aluguelService.pegarPorFilme(idFilme).isEmpty()){
+    public synchronized ResponseEntity<?> pegarPorFilme(Integer idFilme) {
+        if (aluguelService.pegarPorFilme(idFilme).isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Nenhum aluguel encontrado");
         }
@@ -66,8 +66,8 @@ public class AluguelController {
     }
 
     @GetMapping("/usuario/{id}")
-    public synchronized ResponseEntity<?> pegarPorUsuario(Integer idUsuario){
-        if (aluguelService.pegarPorUsuario(idUsuario).isEmpty()){
+    public synchronized ResponseEntity<?> pegarPorUsuario(Integer idUsuario) {
+        if (aluguelService.pegarPorUsuario(idUsuario).isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Nenhum aluguel encontrado");
         }

@@ -7,7 +7,7 @@ import org.springframework.lang.NonNull;
 
 import java.util.List;
 
-public interface AluguelRepository extends JpaRepository<Aluguel,Integer> {
+public interface AluguelRepository extends JpaRepository<Aluguel, Integer> {
     @Query("select a from Aluguel a where a.idFilme = ?1")
     List<Aluguel> findByIdFilme(@NonNull Integer idFilme);
 
