@@ -73,5 +73,4 @@ public class AluguelController {
         }
         return ResponseEntity.ok(aluguelService.pegarPorUsuario(idUsuario));
     }
-
 }

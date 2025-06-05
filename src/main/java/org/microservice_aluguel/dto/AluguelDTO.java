@@ -11,12 +11,22 @@ public class AluguelDTO {
     private Integer idFilme;
     private LocalDate inicioAluguel;
     private LocalDate devolucaoAluguel;
+    private float valorAluguel;
 
-    public AluguelDTO(Integer idUsuario, Integer idFilme, LocalDate inicioAluguel, LocalDate devolucaoAluguel) {
+    public AluguelDTO(Integer idUsuario, Integer idFilme, LocalDate inicioAluguel, LocalDate devolucaoAluguel, float valorAluguel) {
         this.idUsuario = idUsuario;
         this.idFilme = idFilme;
         this.inicioAluguel = inicioAluguel;
         this.devolucaoAluguel = devolucaoAluguel;
+        this.valorAluguel = valorAluguel;
+    }
+
+    public float getValorAluguel() {
+        return valorAluguel;
+    }
+
+    public void setValorAluguel(float valorAluguel) {
+        this.valorAluguel = valorAluguel;
     }
 
     public Integer getIdUsuario() {
@@ -56,7 +66,8 @@ public class AluguelDTO {
                 idUsuario,
                 idFilme,
                 inicioAluguel,
-                devolucaoAluguel
+                devolucaoAluguel,
+                valorAluguel
         );
     }
 

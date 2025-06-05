@@ -11,5 +11,4 @@ public class App {
         System.out.println("http://localhost:8080/h2-console");
         System.out.println("http://localhost:8080/swagger-ui.html");
     }
-
 }

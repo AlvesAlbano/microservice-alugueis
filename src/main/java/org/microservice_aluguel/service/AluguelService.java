@@ -1,6 +1,7 @@
 package org.microservice_aluguel.service;
 
 import jakarta.transaction.Transactional;
+import org.microservice_aluguel.client.FilmesClient;
 import org.microservice_aluguel.dto.AluguelDTO;
 import org.microservice_aluguel.model.Aluguel;
 import org.microservice_aluguel.repository.AluguelRepository;
@@ -15,11 +16,19 @@ public class AluguelService {
 
     @Autowired
     private AluguelRepository aluguelRepository;
+    @Autowired
+    private FilmesClient filmesClient;
 
     @Transactional
     public void adicionarAluguel(AluguelDTO aluguelDTO) {
-        var novoAluguel = aluguelDTO.aluguelBuilder();
 
+        final String filmeJson = filmesClient.getFilmeById(aluguelDTO.getIdFilme());
+
+        if (filmeJson.isBlank()) {
+            throw new RuntimeException("Filme não encontrado");
+        }
+
+        var novoAluguel = aluguelDTO.aluguelBuilder();
         aluguelRepository.saveAndFlush(novoAluguel);
     }
 
@@ -41,6 +50,7 @@ public class AluguelService {
         aluguelAtual.setIdFilme(aluguelDTO.getIdFilme());
         aluguelAtual.setInicioAluguel(aluguelDTO.getInicioAluguel());
         aluguelAtual.setDevolucaoAluguel(aluguelDTO.getDevolucaoAluguel());
+        aluguelAtual.setValorAluguel(aluguelDTO.getValorAluguel());
 
         aluguelRepository.saveAndFlush(aluguelAtual);
     }

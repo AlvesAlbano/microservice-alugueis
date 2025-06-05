@@ -27,14 +27,26 @@ public class Aluguel {
     @Column(name = "devolucao-aluguel")
     private LocalDate devolucaoAluguel;
 
+    @Column(name = "valor-aluguel")
+    private float valorAluguel;
+
     protected Aluguel() {
     }
 
-    public Aluguel(Integer idUsuario, Integer idFilme, LocalDate inicioAluguel, LocalDate devolucaoAluguel) {
+    public Aluguel(Integer idUsuario, Integer idFilme, LocalDate inicioAluguel, LocalDate devolucaoAluguel, float valorAluguel) {
         this.idUsuario = idUsuario;
         this.idFilme = idFilme;
         this.inicioAluguel = inicioAluguel;
         this.devolucaoAluguel = devolucaoAluguel;
+        this.valorAluguel = valorAluguel;
+    }
+
+    public float getValorAluguel() {
+        return valorAluguel;
+    }
+
+    public void setValorAluguel(float valorAluguel) {
+        this.valorAluguel = valorAluguel;
     }
 
     public long getIdUsuario() {
