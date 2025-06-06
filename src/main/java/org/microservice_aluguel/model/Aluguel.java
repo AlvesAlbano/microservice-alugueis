@@ -2,10 +2,14 @@ package org.microservice_aluguel.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import org.microservice_aluguel.dto.AluguelDTO;
 
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "alugueis", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"id-usuario","id-filme"})
+        })
 public class Aluguel {
 
     @Id
@@ -16,7 +20,7 @@ public class Aluguel {
     @Column(name = "id-usuario")
     private Integer idUsuario;
 
-    @Column(name = "id-filme", unique = true)
+    @Column(name = "id-filme")
     private Integer idFilme;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
@@ -84,4 +88,13 @@ public class Aluguel {
     public Integer getIdAluguel() {
         return idAluguel;
     }
+
+    public void atualizarDados(AluguelDTO aluguelDTO) {
+        this.idUsuario = aluguelDTO.getIdUsuario();
+        this.idFilme = aluguelDTO.getIdFilme();
+        this.inicioAluguel = aluguelDTO.getInicioAluguel();
+        this.devolucaoAluguel = aluguelDTO.getDevolucaoAluguel();
+        this.valorAluguel = aluguelDTO.getValorAluguel();
+    }
+
 }
