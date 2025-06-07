@@ -2,6 +2,7 @@ package org.microservice_aluguel.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.microservice_aluguel.client.FilmesClient;
+import org.microservice_aluguel.client.UsuarioClient;
 import org.microservice_aluguel.dto.AluguelDTO;
 import org.microservice_aluguel.model.Aluguel;
 import org.microservice_aluguel.repository.AluguelRepository;
@@ -19,14 +20,19 @@ public class AluguelService {
     private AluguelRepository aluguelRepository;
     @Autowired
     private FilmesClient filmesClient;
+    @Autowired
+    private UsuarioClient usuarioClient;
 
     @Transactional
     public void adicionarAluguel(AluguelDTO aluguelDTO) {
 
         String filmeJson = filmesClient.getFilmeById(aluguelDTO.getIdFilme());
+        String usuarioJson = usuarioClient.getUsuarioById(aluguelDTO.getIdUsuario());
 
         if (filmeJson.isBlank()) {
             throw new RuntimeException("Filme não encontrado");
+        } else if(usuarioJson.isBlank()){
+            throw new RuntimeException("Usuario não encontrado");
         }
 
         var novoAluguel = aluguelDTO.aluguelBuilder();

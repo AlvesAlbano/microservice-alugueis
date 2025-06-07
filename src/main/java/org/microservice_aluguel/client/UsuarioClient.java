@@ -6,12 +6,12 @@ import org.springframework.web.client.RestClient;
 @Component
 public class UsuarioClient {
     private final RestClient restClient = RestClient.create();
-    private final String urlBase = "";
+    private final String urlBase = "https://projetoronaldo.onrender.com/";
 
     public String getUsuarioById(Integer id){
         return restClient
                 .get()
-                .uri(urlBase + "filmes/" + id)
+                .uri(urlBase + "api/clientes/" + id)
                 .retrieve()
                 .body(String.class);
     }

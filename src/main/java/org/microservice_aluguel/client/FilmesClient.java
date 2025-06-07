@@ -8,7 +8,6 @@ public class FilmesClient {
 
     private final RestClient restClient = RestClient.create();
     private final String urlBase = "http://filmes-api-production.up.railway.app/";
-//    private final String urlBase = "http://localhost:8081/";
 
     public String getFilmeById(Integer id){
         return restClient
